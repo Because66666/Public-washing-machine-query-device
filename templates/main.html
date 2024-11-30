@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename= 'bootstrap.min.css' ) }}">
+    <style>
+      .red { color: red; }
+      .green { color: green; }
+    </style>
+    <title>13宿-5层洗衣机查看器</title>
+</head>
+<body>
+    <div class="container mt-5">
+        <h1 class="text-center mb-4">13宿-洗衣机查看器</h1>
+        <h3 class="text-center mb-4">5层</h3>
+        <table id="logsTable" class="table table-striped">
+            <thead>
+                <tr>
+                    <th>检查时间</th>
+                    <th>左边</th>
+                    <th>右边</th>
+                </tr>
+            </thead>
+            <tbody id="logTableBody">
+                <tr>
+                    <th>{{data.time}}</th>
+                    <th class="data">{{data.left}}</th>
+                    <th class="data">{{data.right}}</th>
+                </tr>
+            </tbody>
+        </table>
+        <h3 class="text-center mb-4">4层</h3>
+        <table id="logsTable2" class="table table-striped">
+            <thead>
+                <tr>
+                    <th>检查时间</th>
+                    <th>左边</th>
+                    <th>右边</th>
+                </tr>
+            </thead>
+            <tbody id="logTableBody2">
+                <tr>
+                    <th>{{data.time}}</th>
+                    <th class="data">{{data.left_4}}</th>
+                    <th class="data">{{data.right_4}}</th>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div>其他信息：{{data.info}}</div>
+<button type="button" class="btn btn-primary" onclick="location.reload();">刷新</button>
+<script>
+      // 获取元素
+var thElements = document.querySelectorAll('.data');
+
+thElements.forEach(function(thElement) {
+  if (thElement.textContent === 'True') {
+    thElement.className = 'data green';
+  } else if (thElement.textContent === 'False') {
+    thElement.className = 'data red';
+  }
+});
+</script>
+</body>
+</html>
